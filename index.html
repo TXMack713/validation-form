@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validation Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to The Submission Form</h1>
+      <h3>Please enter your details below.</h3>
+    </header>
+    <main>
+      <form
+        action="https://frontend-take-home.fetchrewards.com/form"
+        method="post"
+      >
+        <label for="user_name">Name</label>
+        <input
+          type="text"
+          id="user_name"
+          name="name"
+          placeholder="Ex: John Doe"
+          required
+        />
+        <label for="user_email">Email</label>
+        <input
+          type="email"
+          id="user_email"
+          name="email"
+          placeholder="myemail@example.com"
+          required
+        />
+        <label for="user_password">Password</label>
+        <input
+          type="password"
+          id="user_password"
+          name="password"
+          minlength="8"
+          maxlength="32"
+          placeholder="Ex: myAwesomePassword"
+          required
+        />
+        <select name="occupation" id="user_occupation" required>
+          Occupation
+        </select>
+        <select name="state" id="user_state" required>
+          State
+        </select>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </form>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
