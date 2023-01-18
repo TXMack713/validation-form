@@ -22,17 +22,22 @@
           type="text"
           id="user_name"
           name="name"
+          pattern="[\D\s]+"
           placeholder="Ex: John Doe"
+          title="Please enter your first and last name. Ex: John Doe"
           required
         />
+        <br />
         <label for="user_email">Email</label>
         <input
           type="email"
           id="user_email"
           name="email"
           placeholder="myemail@example.com"
+          title="Please enter a legitimate email to proceed. Ex: myemail@example.com"
           required
         />
+        <br />
         <label for="user_password">Password</label>
         <input
           type="password"
@@ -43,12 +48,18 @@
           placeholder="Ex: myAwesomePassword"
           required
         />
-        <select name="occupation" id="user_occupation" required>
-          Occupation
-        </select>
-        <select name="state" id="user_state" required>
-          State
-        </select>
+        <form
+          action="https://frontend-take-home.fetchrewards.com/form"
+          method="get"
+        >
+          <br />
+          <label for="user_occupation">Occupation</label>
+          <select name="occupation" id="user_occupation" required></select>
+          <br />
+          <label for="user_state">State</label>
+          <select name="state" id="user_state" required></select>
+          <br />
+        </form>
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
       </form>

@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-content: center;
+  font-size: 16px;
+  margin: 0.5rem;
+  padding: 0.25rem;
+}
+
+input {
+  border: 0.2rem solid #000;
+  margin-bottom: 15px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+input:invalid {
+  border-color: red;
+}
+
+input:valid {
+  border-color: green;
+}
+
+select {
+  width: 100%;
+}
+
+button {
+  margin-top: 1rem;
+  width: 5rem;
+  border-radius: 10%;
+  /* box-shadow: black; */
+}
