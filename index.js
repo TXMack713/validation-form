@@ -20,10 +20,25 @@ async function getOccupation() {
   const url = "https://frontend-take-home.fetchrewards.com/form";
   const response = await fetch(url);
   const data = await response.json();
+  const occupations = data["occupations"];
+  for (let i = 0; i < occupations.length; i++) {
+    const option = document.createElement("option");
+    option.innerHTML = occupations[i];
+    option.value = occupations[i];
+    user_occupation.appendChild(option);
+  }
 }
 
 async function getState() {
   const url = "https://frontend-take-home.fetchrewards.com/form";
   const response = await fetch(url);
   const data = await response.json();
+  const locations = data["states"];
+  for (let i = 0; i < locations.length; i++) {
+    const option = document.createElement("option");
+    const locale = locations[i]["abbreviation"] + " - " + locations[i]["name"];
+    option.innerHTML = locale;
+    option.value = locations[i]["name"];
+    user_state.appendChild(option);
+  }
 }
