@@ -12,6 +12,10 @@ body {
   padding: 0.25rem;
 }
 
+/* label {
+  width: 100%;
+} */
+
 input {
   border: 0.2rem solid #000;
   margin-bottom: 15px;
