@@ -10,10 +10,6 @@ email.addEventListener('input', (event) => {
   }
 });
 
-// const page = document.querySelector('body');
-// page.addEventListener('load', getOccupation);
-// page.addEventListener('load', getState);
-
 const user_occupation = document.getElementById('user_occupation');
 user_occupation.addEventListener('click', getOccupation);
 
@@ -47,7 +43,7 @@ async function getState() {
   }
 }
 
-function handleSubmit(event) {
+async function handleSubmit(event) {
   event.preventDefault();
 
   const data = new FormData(event.target);
@@ -57,6 +53,31 @@ function handleSubmit(event) {
   value.topics = data.getAll('topics');
 
   console.log({ value });
+
+  const response = await fetchService.performPostHTTPRequest(
+    'https://frontend-take-home.fetchrewards.com/form',
+    value
+  );
+  console.log(response);
+
+  async function performPostHTTPRequest(fetchLink, body) {
+    if (!fetchLink || !body) {
+      throw new Error('The POST request parameter was not passed.');
+    }
+
+    try {
+      const rawResponse = await fetch(fetchLink, {
+        method: 'POST',
+        body: JSON.stringify(body),
+      });
+
+      const content = await rawResponse.json();
+      return content;
+    } catch (err) {
+      console.error(`Error at fetch POST: ${err}`);
+      throw err;
+    }
+  }
 }
 
 const form = document.querySelector('form');
