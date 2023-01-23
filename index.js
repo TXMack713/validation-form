@@ -10,15 +10,15 @@ email.addEventListener('input', (event) => {
   }
 });
 
-const page = document.querySelector('html');
-page.addEventListener('load', getOccupation);
-page.addEventListener('load', getState);
+// const page = document.querySelector('body');
+// page.addEventListener('load', getOccupation);
+// page.addEventListener('load', getState);
 
 const user_occupation = document.getElementById('user_occupation');
-// user_occupation.addEventListener("click", getOccupation);
+user_occupation.addEventListener('click', getOccupation);
 
 const user_state = document.getElementById('user_state');
-// user_state.addEventListener("click", getState);
+user_state.addEventListener('click', getState);
 
 async function getOccupation() {
   const url = 'https://frontend-take-home.fetchrewards.com/form';
@@ -46,3 +46,18 @@ async function getState() {
     user_state.appendChild(option);
   }
 }
+
+const submit = document.getElementById('submit');
+submit.addEventListener('click', () => {
+  let userName = document.getElementById('name').value;
+  let userEmail = document.getElementById('email').value;
+  let userPassword = document.getElementById('user_password').value;
+  let userOccupation = document.getElementById('user_occupation').value;
+  let userState = document.getElementById('user_state').value;
+
+  console.log(userName);
+  console.log(userEmail);
+  console.log(userPassword);
+  console.log(userOccupation);
+  console.log(userState);
+});
