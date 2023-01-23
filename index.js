@@ -50,33 +50,28 @@ async function handleSubmit(event) {
 
   const value = Object.fromEntries(data.entries());
 
-  value.topics = data.getAll('topics');
+  // value.topics = data.getAll('topics');
 
   console.log({ value });
 
-  const response = await fetchService.performPostHTTPRequest(
-    'https://frontend-take-home.fetchrewards.com/form',
-    value
-  );
-  console.log(response);
-
-  async function performPostHTTPRequest(fetchLink, body) {
-    if (!fetchLink || !body) {
-      throw new Error('The POST request parameter was not passed.');
-    }
-
-    try {
-      const rawResponse = await fetch(fetchLink, {
+  try {
+    const rawResponse = await fetch(
+      'https://frontend-take-home.fetchrewards.com/form',
+      {
         method: 'POST',
-        body: JSON.stringify(body),
-      });
+        body: JSON.stringify(value),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
 
-      const content = await rawResponse.json();
-      return content;
-    } catch (err) {
-      console.error(`Error at fetch POST: ${err}`);
-      throw err;
-    }
+    const content = rawResponse.json();
+    console.log(content);
+    return content;
+  } catch (err) {
+    console.error(`Error at fetch POST: ${err}`);
+    throw err;
   }
 }
 
