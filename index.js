@@ -47,17 +47,17 @@ async function getState() {
   }
 }
 
-const submit = document.getElementById('submit');
-submit.addEventListener('click', () => {
-  let userName = document.getElementById('name').value;
-  let userEmail = document.getElementById('email').value;
-  let userPassword = document.getElementById('user_password').value;
-  let userOccupation = document.getElementById('user_occupation').value;
-  let userState = document.getElementById('user_state').value;
+function handleSubmit(event) {
+  event.preventDefault();
 
-  console.log(userName);
-  console.log(userEmail);
-  console.log(userPassword);
-  console.log(userOccupation);
-  console.log(userState);
-});
+  const data = new FormData(event.target);
+
+  const value = Object.fromEntries(data.entries());
+
+  value.topics = data.getAll('topics');
+
+  console.log({ value });
+}
+
+const form = document.querySelector('form');
+form.addEventListener('submit', handleSubmit);
